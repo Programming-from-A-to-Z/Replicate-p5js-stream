@@ -45,14 +45,14 @@ app.post('/api/text', async (request, response) => {
 
     // Handle 'error' event during streaming
     source.addEventListener('error', (e) => {
-      console.error('error', JSON.parse(e.data));
+      console.error('error', e);
       response.end();
     });
 
     // Handle 'done' event when streaming is complete
     source.addEventListener('done', (e) => {
       source.close();
-      console.log('done', JSON.parse(e.data));
+      console.log('done', e);
       response.end();
     });
   } else {
